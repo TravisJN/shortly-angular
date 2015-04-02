@@ -1,10 +1,17 @@
-<div id='container' class='link' ng-repeat="link in data.links">
+<input class='search' ng-model='searchTerm' type='text'>
+
+<div id='container' class='link' ng-repeat="link in data.links | filter:searchTerm">
   <!-- Your html here -->
   <img src='../../assets/redirect_icon.png'/>
-  <div class='info'>
-    <div class='visits'><span class='count'>{{link.visits}}</span>Visits</div>
-    <div class='title'>{{link.title}}</div>
-    <div class='original'>{{link.url}}</div>
-    <a href='{{link.base_url}}/{{link.code}}'>{{link.base_url}}/{{link.code}}</a>
-  </div>
+  <myShortLink></myShortLink>
 </div>
+
+<!-- Want:
+<myShortLink></myShortLink>
+to stand in for:
+<div class='info'>
+  <div class='visits'><span class='count'>{{link.visits}}</span>Visits</div>
+  <div class='title'>{{link.title}}</div>
+  <div class='original'>{{link.url}}</div>
+  <a href='/api/links/{{link.code}}'>{{link.base_url}}/{{link.code}}</a>
+</div> -->

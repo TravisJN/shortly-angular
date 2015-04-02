@@ -3,8 +3,9 @@
   <h2>Shorten</h2>
 
   <form name="createForm" ng-submit='addLink()'>
-    <input class='text' type='text' ng-model='link.url'>
-    <input type='submit' value='Shorten'>
+    <input class='text' name='url' type='url' ng-model='link.url' required>
+    <p ng-show="createForm.url.$invalid && !createForm.url.$pristine" class="help-block">Please enter a valid URL.</p> 
+    <input ng-disabled="createForm.$invalid" type='submit' value='Shorten'>
   </form>
 
   <img class='spinner' src='../../assets/spiffygif_46x46.gif'>

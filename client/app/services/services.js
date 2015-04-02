@@ -23,6 +23,9 @@ angular.module('shortly.services', [])
       url: '/api/links'
     }).then(function(res){
       this.data.links = res.data;
+      this.data.links.sort(function(a, b){
+        return b.visits-a.visits;
+      });
     }.bind(this));
   };
 

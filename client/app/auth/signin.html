@@ -1,9 +1,19 @@
 <div id='signin'>
   <h2>signin</h2>
   <form name="signinForm" ng-submit='signin()'>
-    <input type='text'ng-model='user.username'>
-    <input type="password" ng-model='user.password'>
-    <button>signin</button>
+    <input type='text' name="username" ng-model='user.username' ng-minlength="4" ng-maxlength="20" required>
+
+    <p ng-show="signinForm.username.$error.minlength" class="help-block">Username is too short.</p>
+
+    <p ng-show="signinForm.username.$error.maxlength" class="help-block">Username is too long.</p>    
+
+    <input type="password" name="password" ng-model='user.password' ng-minlength="4" ng-maxlength="20" required>
+
+    <p ng-show="signinForm.password.$error.minlength" class="help-block">Password is too short.</p>
+
+    <p ng-show="signinForm.password.$error.maxlength" class="help-block">Password is too long.</p> 
+
+    <button ng-disabled="signinForm.$invalid">signin</button>
   </form>
   <a href="#/signup">Don't have an account? <strong>Signup</strong> ...</a>
 </div>

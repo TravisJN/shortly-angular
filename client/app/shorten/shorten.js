@@ -4,4 +4,4 @@ angular.module('shortly.shorten', [])
   // Your code here
   $scope.link = {};
   angular.extend($scope, Links);
-})
+});
