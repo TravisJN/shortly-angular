@@ -14,12 +14,12 @@ module.exports = {
           next(new Error('User does not exist'));
         } else {
           return user.comparePasswords(password)
-            .then(function(foundUser) {
-              if (foundUser) {
+            .then(function(passwordMatch) { // passwordMatch is actually checking if passwords match(?)
+              if (passwordMatch) {
                 var token = jwt.encode(user, 'secret');
                 res.json({token: token});
               } else {
-                return next(new Error('No user'));
+                return next(new Error('Invalid Password')); // Password is incorrect
               }
             });
         }
